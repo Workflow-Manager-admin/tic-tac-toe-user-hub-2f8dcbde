@@ -5,12 +5,15 @@ import { AuthProvider, useAuth } from "./AuthContext";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
 import GameBoard from "./GameBoard";
+import GameHistory from "./GameHistory";
 
-// Inner app body with auth-aware nav and modal controls
+// PUBLIC_INTERFACE
+// Inner app body with auth-aware nav, layout, and modals
 function MainApp() {
   const [theme, setTheme] = useState('light');
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [gameRefresh, setGameRefresh] = useState(0); // trigger history reload
   const auth = useAuth();
 
   // Effect to apply theme to document element
@@ -27,18 +30,17 @@ function MainApp() {
     closeModals();
   };
 
+  // When a game completes (win/loss/draw), trigger history reload
+  const gameCompleteHandler = () => setGameRefresh(gr => gr + 1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <button
-          className="theme-toggle"
-          onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Tic Tac Toe</h1>
+      {/* Navigation/Header Bar */}
+      <nav className="header-bar">
+        <div className="brand-group">
+          <img src={logo} className="App-logo" alt="logo" />
+          <span className="brand-title">Tic Tac Toe</span>
+        </div>
         <div className="auth-nav">
           {auth.isAuthenticated ? (
             <>
@@ -48,32 +50,56 @@ function MainApp() {
           ) : (
             <>
               <button className="btn" onClick={openLogin}>Login</button>
-              <button className="btn" style={{marginLeft:8}} onClick={openRegister}>Register</button>
+              <button className="btn" onClick={openRegister}>Register</button>
             </>
           )}
         </div>
-        <LoginModal
-          open={showLogin}
-          onClose={closeModals}
-          switchToRegister={openRegister}
-        />
-        <RegisterModal
-          open={showRegister}
-          onClose={closeModals}
-          switchToLogin={openLogin}
-        />
-        {/* Add Game Board */}
-        <div style={{margin: "20px 0 14px 0", width: "100%", display: "flex", flexDirection: "column", alignItems: "center"}}>
-          {auth.isAuthenticated && <GameBoard />}
-          {!auth.isAuthenticated && (
-            <div style={{marginTop: 22, fontSize:"1.12em", color:"#b02020"}}>
+        <button
+          className="theme-toggle"
+          onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        >
+          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+        </button>
+      </nav>
+      {/* Modal structure for auth */}
+      <LoginModal
+        open={showLogin}
+        onClose={closeModals}
+        switchToRegister={openRegister}
+      />
+      <RegisterModal
+        open={showRegister}
+        onClose={closeModals}
+        switchToLogin={openLogin}
+      />
+
+      {/* Main area: GameBoard & History */}
+      <main className="main-content">
+        <div style={{flex: "2 2 0", display: "flex", flexDirection: "column", alignItems: "center"}}>
+          {auth.isAuthenticated ? (
+            <GameBoard onGameComplete={gameCompleteHandler} />
+          ) : (
+            <div style={{
+              marginTop: "60px", marginBottom: "18px", fontSize:"1.19em",
+              color:"#b02020", background:"#fff4f2", borderRadius:"7px", padding:"1.4em 18px", maxWidth: 390
+            }}>
               Please login or register to play.
             </div>
           )}
+          <div>
+            <span style={{color: "var(--secondary)", fontSize:"0.98em", marginTop:13, display:"block"}}>
+              Theme: <strong style={{color:"var(--primary)"}}>{theme}</strong>
+            </span>
+          </div>
         </div>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
+        {/* Game history sidebar (hidden if not authenticated) */}
+        <div style={{flex: "1 1 0"}}>
+          <GameHistory refreshTrigger={gameRefresh} />
+        </div>
+      </main>
+
+      <footer style={{ marginTop: 18, padding: "10px 0", textAlign:"center", color: "var(--text-secondary)", fontSize:"0.97em"}}>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -82,7 +108,7 @@ function MainApp() {
         >
           Learn React
         </a>
-      </header>
+      </footer>
     </div>
   );
 }
