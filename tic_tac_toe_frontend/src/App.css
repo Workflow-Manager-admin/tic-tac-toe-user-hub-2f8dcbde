@@ -103,6 +103,36 @@
   }
 }
 
+/* ==== Tic Tac Toe Game Board === */
+
+.ttt-board {
+  margin: 0 auto;
+  background: var(--bg-secondary);
+}
+.ttt-cell {
+  transition: background 0.2s, box-shadow 0.2s, color 0.14s;
+  outline: none;
+}
+.ttt-cell:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 2px #90caf9;
+}
+.ttt-cell:disabled {
+  opacity: 0.74;
+  cursor: not-allowed;
+}
+/* Responsive cells for mobile */
+@media (max-width: 420px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, 48px) !important;
+  }
+  .ttt-cell {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.3em !important;
+  }
+}
+
 /* Modal Backdrop and Modal Style */
 .modal-backdrop {
   position: fixed;

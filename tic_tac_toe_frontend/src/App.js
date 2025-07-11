@@ -4,6 +4,7 @@ import './App.css';
 import { AuthProvider, useAuth } from "./AuthContext";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import GameBoard from "./GameBoard";
 
 // Inner app body with auth-aware nav and modal controls
 function MainApp() {
@@ -61,12 +62,15 @@ function MainApp() {
           onClose={closeModals}
           switchToLogin={openLogin}
         />
-        <p>
-          {auth.isAuthenticated
-            ? <>Welcome! You are authenticated.</>
-            : <>Please login or register to play.</>
-          }
-        </p>
+        {/* Add Game Board */}
+        <div style={{margin: "20px 0 14px 0", width: "100%", display: "flex", flexDirection: "column", alignItems: "center"}}>
+          {auth.isAuthenticated && <GameBoard />}
+          {!auth.isAuthenticated && (
+            <div style={{marginTop: 22, fontSize:"1.12em", color:"#b02020"}}>
+              Please login or register to play.
+            </div>
+          )}
+        </div>
         <p>
           Current theme: <strong>{theme}</strong>
         </p>
