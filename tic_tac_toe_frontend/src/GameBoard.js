@@ -117,49 +117,28 @@ export default function GameBoard({ onGameComplete }) {
 
   // API: Make move
   // PUBLIC_INTERFACE
+  /**
+   * Makes a move on the board, updating state based directly on the backend's response, which
+   * includes both the user's move and, if applicable, the computer's move. Ensures the
+   * board always reflects the actual server state after each move.
+   */
   const makeMove = async (row, col) => {
     if (game?.finished || moveLoading) return;
     setMoveLoading(true);
     setError(null);
     try {
-      // Make the player's move
+      // Post move to backend - backend responds with up-to-date board (includes computer move if relevant)
       const resp = await fetch(`${BACKEND_API}/game/move`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({ row, col })
       });
+
       if (resp.ok) {
-        let data = await resp.json();
-        setGame(data); // Always update immediately after move
-
-        // If the game is not finished and it's now the CPU's (opponent's) turn,
-        // poll for opponent move and refresh state
-        if (!data.finished && ((user === data.player_x && data.next_turn === "O") || (user === data.player_o && data.next_turn === "X"))) {
-          // Give the backend a moment to process possible CPU/autoplayer move
-          // Then re-fetch board state
-          setTimeout(async () => {
-            try {
-              // Add small fetch for updated game state after CPU move
-              const pollResp = await fetch(`${BACKEND_API}/game/start`, {
-                method: "POST",
-                headers: authHeaders(),
-                body: JSON.stringify({ opponent_username: null })
-              });
-              // Ignore pollResp, this endpoint does not get updated state, so use latest /game/move instead.
-              // Instead, try to move again with a dummy move, but that's risky.
-              // Ideally, there needs to be a "get current game state" endpoint.
-              // WORKAROUND: Use /game/reset to reset, but that's not appropriate.
-              // Use local stale state for now, as backend does return both moves.
-              // Optionally, you could add a GET /game/state to backend for best solution.
-              // For now: Try another fetch to /game/move with no-op to re-sync, but skip in frontend.
-              // NOP - as backend should already return CPU's response move in its move response.
-            } catch (e) {
-              // Swallow error in polling, don't set error
-            }
-          }, 350);
-        }
-
-        setDidNotify(false); // allow notification after move
+        // The backend is expected to return the full updated board state after both moves.
+        const data = await resp.json();
+        setGame(data);
+        setDidNotify(false);
       } else {
         const err = await resp.json();
         setError(err.detail || "Invalid move");
