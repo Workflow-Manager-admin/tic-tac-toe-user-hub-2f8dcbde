@@ -121,13 +121,18 @@ export default function GameBoard({ onGameComplete }) {
    * Makes a move on the board, updating state based directly on the backend's response, which
    * includes both the user's move and, if applicable, the computer's move. Ensures the
    * board always reflects the actual server state after each move.
+   * 
+   * The backend contract (see OpenAPI spec) guarantees that TOP-LEVEL response from /game/move
+   * always includes the *full game state* after the move is processed, including the current board,
+   * next turn, winner, finished, player_x/o. This includes the results of both the player's and CPU/computer's
+   * move, if the computer plays after the user. No polling or additional fetch is required.
    */
   const makeMove = async (row, col) => {
     if (game?.finished || moveLoading) return;
     setMoveLoading(true);
     setError(null);
     try {
-      // Post move to backend - backend responds with up-to-date board (includes computer move if relevant)
+      // Post move to backend - backend responds with up-to-date board (includes computer move if applicable)
       const resp = await fetch(`${BACKEND_API}/game/move`, {
         method: "POST",
         headers: authHeaders(),
@@ -135,13 +140,25 @@ export default function GameBoard({ onGameComplete }) {
       });
 
       if (resp.ok) {
-        // The backend is expected to return the full updated board state after both moves.
+        // The backend returns the entire state: board, players, next_turn, winner, finished.
         const data = await resp.json();
-        setGame(data);
+
+        // Sanity: defensive validation in case backend doesn't fully update
+        // Always trust server as "source of truth" for state after a move!
+        setGame({
+          board: Array.isArray(data.board) ? data.board : emptyBoard(),
+          player_x: data.player_x ?? game?.player_x ?? "",
+          player_o: data.player_o ?? game?.player_o ?? "",
+          next_turn: data.next_turn ?? "X",
+          winner: data.hasOwnProperty("winner") ? data.winner : null,
+          finished: typeof data.finished === "boolean" ? data.finished : false,
+        });
         setDidNotify(false);
       } else {
-        const err = await resp.json();
-        setError(err.detail || "Invalid move");
+        // Error from backend (invalid move etc.)
+        let err;
+        try { err = await resp.json(); } catch {}
+        setError((err && err.detail) || "Invalid move");
       }
     } catch (e) {
       setError("Network or server error making move");
