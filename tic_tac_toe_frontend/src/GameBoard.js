@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 
 /**
@@ -60,8 +60,16 @@ function Board({ board, onCellClick, disabled }) {
 }
 
 
+/**
+ * GameBoard - handles game state, UI, and backend interactions.
+ * Features:
+ * - Show 3x3 tic-tac-toe grid, current turn, outcome, move history.
+ * - Authenticated API calls for: start game, make move, reset game.
+ * - Minimal, modern UI integrated with parent theme.
+ * onGameComplete?: optional callback called after a game finishes (win/loss/draw)
+ */
 // PUBLIC_INTERFACE
-export default function GameBoard() {
+export default function GameBoard({ onGameComplete }) {
   // Auth - get JWT for API, username for display
   const { isAuthenticated, user, token } = useAuth();
 
@@ -71,6 +79,7 @@ export default function GameBoard() {
   const [moveLoading, setMoveLoading] = useState(false);
   const [startLoading, setStartLoading] = useState(false);
   const [resetLoading, setResetLoading] = useState(false);
+  const [didNotify, setDidNotify] = useState(false); // track notification after completion
 
   // Helper for auth header
   function authHeaders() {
@@ -120,6 +129,7 @@ export default function GameBoard() {
       if (resp.ok) {
         const data = await resp.json();
         setGame(data);
+        setDidNotify(false); // allow notification after move
       } else {
         const err = await resp.json();
         setError(err.detail || "Invalid move");
@@ -153,6 +163,18 @@ export default function GameBoard() {
       setResetLoading(false);
     }
   };
+
+  // Notify parent to refresh game history when a game finishes, once per finish.
+  useEffect(() => {
+    if (typeof onGameComplete === "function" && game?.finished && !didNotify) {
+      onGameComplete();
+      setDidNotify(true);
+    } else if (game && !game.finished && didNotify) {
+      setDidNotify(false);
+    }
+    // ignore exhaustive-deps for onGameComplete
+    // eslint-disable-next-line
+  }, [game, onGameComplete]);
 
   // Winner/turn message
   function gameStatus() {
