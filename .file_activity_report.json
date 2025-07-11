@@ -2,165 +2,165 @@
     "top_n_overall": [
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/package.json",
-            "count": 112
+            "count": 138
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.js",
-            "count": 42
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.css",
-            "count": 34
+            "count": 45
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/GameBoard.js",
-            "count": 34
+            "count": 44
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.css",
+            "count": 37
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/post_process_status.lock",
-            "count": 25
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.js",
-            "count": 22
+            "count": 30
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/eslint.config.mjs",
-            "count": 20
+            "count": 24
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.js",
+            "count": 24
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/AuthContext.js",
-            "count": 19
+            "count": 21
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/LoginModal.js",
-            "count": 19
+            "count": 21
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/RegisterModal.js",
-            "count": 19
+            "count": 21
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/GameHistory.js",
-            "count": 12
+            "count": 14
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.css",
-            "count": 10
+            "count": 12
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/README.md",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.test.js",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/setupTests.js",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/favicon.ico",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/logo192.png",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/logo512.png",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/manifest.json",
-            "count": 5
+            "count": 6
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/robots.txt",
-            "count": 5
+            "count": 6
         }
     ],
     "top_n_last_10_min_accessed": [
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/package.json",
-            "count": 109
+            "count": 86
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/GameBoard.js",
-            "count": 28
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.js",
             "count": 26
         },
         {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.js",
+            "count": 13
+        },
+        {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/App.css",
-            "count": 22
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.js",
-            "count": 18
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/post_process_status.lock",
-            "count": 15
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/eslint.config.mjs",
             "count": 12
         },
         {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/AuthContext.js",
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/post_process_status.lock",
             "count": 10
         },
         {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/LoginModal.js",
-            "count": 10
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/RegisterModal.js",
-            "count": 10
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/GameHistory.js",
-            "count": 10
-        },
-        {
-            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.css",
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/eslint.config.mjs",
             "count": 8
         },
         {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/GameHistory.js",
+            "count": 7
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.css",
+            "count": 6
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/index.js",
+            "count": 6
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/AuthContext.js",
+            "count": 6
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/LoginModal.js",
+            "count": 6
+        },
+        {
+            "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/RegisterModal.js",
+            "count": 6
+        },
+        {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/favicon.ico",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/logo192.png",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/logo512.png",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/manifest.json",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/robots.txt",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/public/index.html",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/src/logo.svg",
-            "count": 5
+            "count": 4
         },
         {
             "file": "/tmp/kavia/workspace/code-generation/tic-tac-toe-user-hub-2f8dcbde/tic_tac_toe_frontend/README.md",
-            "count": 3
+            "count": 2
         }
     ]
 }
